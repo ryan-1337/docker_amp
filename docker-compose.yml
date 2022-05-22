@@ -9,13 +9,13 @@ services:
 
     links: 
       - php-fpm
+      - phpmyadmin
   php-fpm:
     image: php:8.0-fpm
     volumes:
       - ./www/html:/var/www/html
     expose:
       - 9000
-
   database:
     image: mariadb
     environment:
@@ -23,3 +23,11 @@ services:
       - MYSQL_USER=myuser
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=docker
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=database
