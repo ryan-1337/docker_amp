@@ -6,8 +6,6 @@ services:
       - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
     ports:
       - 273:80
-    networks:
-      - backend
 
     links: 
       - php-fpm
@@ -17,8 +15,6 @@ services:
       - ./www/html:/var/www/html
     expose:
       - 9000
-    networks:
-      - backend
 
   database:
     image: mariadb
@@ -27,5 +23,3 @@ services:
       - MYSQL_USER=myuser
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=docker
-networks:
-  backend:
