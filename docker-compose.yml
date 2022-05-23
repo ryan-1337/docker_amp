@@ -6,9 +6,6 @@ services:
       - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
     ports:
       - 273:80
-    links: 
-      - php-fpm
-      - phpmyadmin
   php-fpm:
     image: php:8.0-fpm
     volumes:
